@@ -1,0 +1,41 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.nav-icon{
+  max-width: 25px;
+  margin-right: 30px;
+}
+
+.logut-icon{
+  max-width: 25px;
+  margin-right: 30px
+}
+
+.list-item{
+  margin-top: 40px;
+}
+
+.list-item-logut{
+  margin-top: 450px
+}
+
+.nav-logo{
+  max-width: 25px;
+  margin-right: 10px;
+}
+
