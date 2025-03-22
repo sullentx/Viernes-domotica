@@ -61,3 +61,26 @@
       }
     }
   }
+
+  // ... tus estilos actuales
+
+.location-container {
+  margin-top: 8px;
+
+  .spinner-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    .loading-text {
+      font-size: 14px;
+      color: #666;
+    }
+  }
+}
+
+// Para personalizar el tamaño y color del spinner
+::ng-deep .mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #3F3F3F;
+}
