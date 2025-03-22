@@ -35,6 +35,23 @@ $viernes-theme: mat.define-theme((
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($viernes-theme);
 /* You can add global styles to this file, and also import other style files */
+// Cambiar el color de fondo global
+body {
+  margin: 0; 
+  font-family: Poppins, sans-serif;
+  background-color: #EEEEEE; 
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Poppins, sans-serif; }
+
+.mat-sidenav {
+  background-color: white !important;
+}
+
+.mat-card {
+  background-color: white !important;
+}
+
+.mat-toolbar {
+  background-color: white !important;
+}
+

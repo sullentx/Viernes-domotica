@@ -8,6 +8,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { HeaderComponent } from "../shared/header/header.component";
+import { ClockComponent } from "../clock/clock.component";
 
 @Component({
   selector: 'app-sidenav',
@@ -21,7 +23,7 @@ import { map, shareReplay } from 'rxjs/operators';
     MatListModule,
     MatIconModule,
     AsyncPipe,
-  ]
+]
 })
 export class SidenavComponent {
   private breakpointObserver = inject(BreakpointObserver);
