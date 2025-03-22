@@ -1,0 +1,26 @@
+.header {
+    height: 160px;
+    font-weight: bold;
+    font-size: 40px;
+    background-color: white;
+}
+
+.text{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px 0 250px; 
+    color: #3F3F3F;
+    padding-top: 10px;
+}
+
+.clock-container {
+    margin-left: auto; 
+    @media (max-width: 992px) {
+      margin-left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+

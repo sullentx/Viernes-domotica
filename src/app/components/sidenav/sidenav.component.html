@@ -1,3 +1,4 @@
+
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
@@ -29,8 +30,10 @@
       </a>
     </mat-nav-list>
   </mat-sidenav>
+
   <mat-sidenav-content>
-    <mat-toolbar>
+    <div class="toolbar">
+     
       @if (isHandset$ | async) {
         <button
           type="button"
@@ -40,7 +43,9 @@
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
       }
-      <span>viernes</span>
-    </mat-toolbar>
+
+    </div>
   </mat-sidenav-content>
+
 </mat-sidenav-container>
+
