@@ -1,0 +1,30 @@
+<div class="dialog-header">
+  <h2 mat-dialog-title>Notificaciones</h2>
+</div>
+
+<mat-dialog-content>
+  @if (notifications.length === 0) {
+    <div class="no-notifications">
+      <p>No tienes notificaciones nuevas</p>
+    </div>
+  } @else {
+    <div class="notifications-list">
+      @for (notification of notifications; track notification.id) {
+        <div class="notification-item" [class.unread]="!notification.read">
+          <div class="notification-content" (click)="markAsRead(notification)">
+            <h3>{{ notification.title }}</h3>
+            <p>{{ notification.message }}</p>
+            <span class="notification-time">{{ notification.time }}</span>
+          </div>
+          <button mat-icon-button (click)="deleteNotification(notification.id)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      }
+    </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Cerrar</button>
+</mat-dialog-actions>

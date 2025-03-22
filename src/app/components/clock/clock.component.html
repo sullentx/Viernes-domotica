@@ -2,6 +2,15 @@
     <div class="clock-content">
       <div class="date">{{ date }}</div>
       <div class="time">{{ time }}</div>
-      <div class="location">{{ location }}</div>
+      <div class="location-container">
+        @if (isLoadingLocation) {
+          <div class="spinner-container">
+            <mat-spinner [diameter]="20"></mat-spinner>
+            <span class="loading-text">Obteniendo ubicación...</span>
+          </div>
+        } @else {
+          <div class="location">{{ location }}</div>
+        }
+      </div>
     </div>
   </div>
