@@ -5,7 +5,6 @@ import { DatePipe, formatDate } from '@angular/common';
   selector: 'app-clock',
   standalone: true,
   templateUrl: './clock.component.html',
-  imports: [DatePipe],
   styleUrls: ['./clock.component.scss']
 })
 export class ClockComponent implements OnInit, OnDestroy {
