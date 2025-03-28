@@ -1,0 +1,13 @@
+<div class="conteiner"> 
+    <section class="icon-door">
+        @if (!status) {
+            <mat-icon>door_front</mat-icon>
+
+        } @else {
+            <mat-icon>door_open</mat-icon>
+        }
+    </section>
+    <div class="toggle-on">
+        <a>{{status}}</a>
+    </div>
+</div>
