@@ -1,13 +1,19 @@
-<div class="conteiner"> 
-    <section class="icon-door">
-        @if (!status) {
-            <mat-icon>door_front</mat-icon>
-
-        } @else {
-            <mat-icon>door_open</mat-icon>
-        }
-    </section>
-    <div class="toggle-on">
-        <a>{{status}}</a>
+<div class="door-control-container">
+    <div class="icon-container">
+      <mat-icon class="door-icon" [class.open]="status">
+        {{ status ? 'door_open' : 'door_front' }}
+      </mat-icon>
+      <div class="door-status">
+        {{ status ? 'Puerta abierta' : 'Puerta cerrada' }}
+      </div>
     </div>
-</div>
+    
+    <div class="toggle-container">
+      <mat-slide-toggle 
+        color="primary"
+        [checked]="status"
+        (change)="toggleDoor($event)">
+        {{ status ? 'Cerrar' : 'Abrir' }}
+      </mat-slide-toggle>
+    </div>
+  </div>

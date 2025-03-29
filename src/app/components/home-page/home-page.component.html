@@ -3,11 +3,16 @@
   <div class="main-content">
     <app-header></app-header>
     <div class="content">
-      <app-image-house></app-image-house>
-      <app-weather-details></app-weather-details>    
+      <div class="top-section">
+        <app-image-house></app-image-house>
+        <app-weather-details></app-weather-details>
+      </div>
       
-      <div class="devices">
-        <app-toggle-on-dor></app-toggle-on-dor>
+      <div class="devices-section">
+        <h3 class="section-title">Dispositivos</h3>
+        <div class="devices-grid">
+          <app-toggle-on-dor></app-toggle-on-dor>
+        </div>
       </div>
     </div>
   </div>
