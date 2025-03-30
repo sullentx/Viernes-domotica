@@ -67,7 +67,22 @@
   
   .devices-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); 
-    gap: 15px; 
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 30px; // Aumentar el gap entre dispositivos (antes 15px)
+    padding: 10px; // Añadir padding adicional
+    
+    // Si prefieres un espaciado fijo entre dispositivos, puedes usar esto:
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px; // Espaciado horizontal y vertical entre dispositivos
+    
+    // Si necesitas específicamente 250px de espacio entre ellos:
+    & > * {
+      margin-right: 250px;
+      
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

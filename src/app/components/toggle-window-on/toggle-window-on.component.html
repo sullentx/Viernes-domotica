@@ -1,0 +1,19 @@
+<div class="window-control-container">
+    <div class="icon-container">
+      <mat-icon class="window-icon" [class.open]="status">
+        {{ status ? 'window_open' : 'window' }}
+      </mat-icon>
+      <div class="window-status">
+        {{ status ? 'Ventana abierta' : 'Ventana cerrada' }}
+      </div>
+    </div>
+    
+    <div class="toggle-container">
+      <mat-slide-toggle 
+        color="primary"
+        [checked]="status"
+        (change)="toggleWindow($event)"> 
+        {{ status ? 'Cerrar' : 'Abrir' }}
+      </mat-slide-toggle>
+    </div>
+  </div>

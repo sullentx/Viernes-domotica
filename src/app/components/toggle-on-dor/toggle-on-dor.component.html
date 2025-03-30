@@ -1,8 +1,8 @@
 <div class="door-control-container">
     <div class="icon-container">
-      <mat-icon class="door-icon" [class.open]="status">
-        {{ status ? 'door_open' : 'door_front' }}
-      </mat-icon>
+        <mat-icon class="door-icon" [class.open]="status">
+            {{ status ? 'meeting_room' : 'sensor_door' }}
+          </mat-icon>
       <div class="door-status">
         {{ status ? 'Puerta abierta' : 'Puerta cerrada' }}
       </div>
