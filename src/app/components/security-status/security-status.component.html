@@ -1,0 +1,21 @@
+<div class="security-status-card" [ngClass]="securityLevel">
+    <div class="status-icon">
+      <mat-icon>{{ getStatusIcon() }}</mat-icon>
+    </div>
+    <div class="status-info">
+      <h3>{{ getStatusMessage() }}</h3>
+      <p>Última revisión: {{ lastCheck | date:'short' }}</p>
+    </div>
+    <div class="status-actions">
+      <button mat-button (click)="runSecurityCheck()">
+        <mat-icon>security</mat-icon> Verificar ahora
+      </button>
+    </div>
+  </div>
+  
+  <div class="status-metrics">
+    <div class="metric-card" *ngFor="let metric of securityMetrics">
+      <div class="metric-value" [ngClass]="metric.status">{{ metric.value }}</div>
+      <div class="metric-label">{{ metric.label }}</div>
+    </div>
+  </div>

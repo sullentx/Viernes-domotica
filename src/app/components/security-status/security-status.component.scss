@@ -1,0 +1,112 @@
+.security-status-card {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    margin-bottom: 20px;
+    
+    &.secure {
+      border-left: 5px solid #4CAF50;
+    }
+    
+    &.warning {
+      border-left: 5px solid #FFC107;
+    }
+    
+    &.alert {
+      border-left: 5px solid #F44336;
+    }
+    
+    .status-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 20px;
+      
+      mat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 40px;
+      }
+      
+      .secure & {
+        background-color: rgba(76, 175, 80, 0.1);
+        color: #4CAF50;
+      }
+      
+      .warning & {
+        background-color: rgba(255, 193, 7, 0.1);
+        color: #FFC107;
+      }
+      
+      .alert & {
+        background-color: rgba(244, 67, 54, 0.1);
+        color: #F44336;
+      }
+    }
+    
+    .status-info {
+      flex: 1;
+      
+      h3 {
+        margin: 0 0 5px 0;
+        font-size: 18px;
+        font-weight: 500;
+      }
+      
+      p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+      }
+    }
+    
+    .status-actions {
+      button {
+        color: #1976D2;
+      }
+    }
+  }
+  
+  .status-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    
+    .metric-card {
+      background-color: white;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      
+      .metric-value {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 8px;
+        
+        &.good {
+          color: #4CAF50;
+        }
+        
+        &.warning {
+          color: #FFC107;
+        }
+        
+        &.danger {
+          color: #F44336;
+        }
+      }
+      
+      .metric-label {
+        font-size: 14px;
+        color: #666;
+      }
+    }
+  }

@@ -1,0 +1,32 @@
+<div class="sensor-card gas" [class.alert]="isGasLevelHigh">
+  <div class="sensor-header">
+    <mat-icon>gas_detector</mat-icon>
+    <h3>Sensor de Gas</h3>
+  </div>
+  
+  <div class="sensor-body">
+    <div class="gas-container">
+      <div class="gas-meter">
+        <div class="gas-level" [style.height.%]="gasLevelPercentage"></div>
+        <div class="gas-threshold" [style.bottom.%]="thresholdPercentage"></div>
+        <div class="gas-value" [class.danger]="isGasLevelHigh">{{ gasLevel.toFixed(1) }} ppm</div>
+      </div>
+      
+      <div class="gas-status">
+        <div class="status-indicator" [class.safe]="!isGasLevelHigh" [class.danger]="isGasLevelHigh"></div>
+        <span class="status-text" [class.danger]="isGasLevelHigh">
+          {{ isGasLevelHigh ? '¡Nivel peligroso!' : 'Nivel seguro' }}
+        </span>
+        <div class="last-reading">
+          {{ lastReading | date:'shortTime' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="emergency-action" *ngIf="isGasLevelHigh">
+    <button mat-raised-button color="warn" (click)="ventilateHome()">
+      <mat-icon>air</mat-icon> Ventilar Casa
+    </button>
+  </div>
+</div>

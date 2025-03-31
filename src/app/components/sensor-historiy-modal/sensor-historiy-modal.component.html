@@ -1,0 +1,63 @@
+<div class="sensor-history-modal">
+    <div class="modal-header">
+      <h2 mat-dialog-title>{{ data.title }}</h2>
+      <button mat-icon-button (click)="closeDialog()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    
+    <mat-dialog-content class="modal-content">
+      <div class="period-filter">
+        <button mat-button 
+          [class.active]="selectedPeriod === 'today'"
+          (click)="changePeriod('today')">
+          Hoy
+        </button>
+        <button mat-button 
+          [class.active]="selectedPeriod === 'week'"
+          (click)="changePeriod('week')">
+          Última semana
+        </button>
+        <button mat-button 
+          [class.active]="selectedPeriod === 'month'"
+          (click)="changePeriod('month')">
+          Último mes
+        </button>
+      </div>
+      
+      <div class="events-container">
+        <ng-container *ngIf="filteredEvents.length; else noEvents">
+          <div class="event-list">
+            <div class="event-item" *ngFor="let event of filteredEvents">
+              <div class="event-time">
+                <div class="time">{{ event.timestamp | date:'shortTime' }}</div>
+                <div class="date">{{ event.timestamp | date:'shortDate' }}</div>
+              </div>
+              
+              <div class="event-icon">
+                <mat-icon>{{ getEventIcon(event) }}</mat-icon>
+              </div>
+              
+              <div class="event-details">
+                <div class="event-message">{{ getEventMessage(event) }}</div>
+                <div class="event-location" *ngIf="event.location">
+                  {{ event.location }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        
+        <ng-template #noEvents>
+          <div class="no-events">
+            <mat-icon>event_busy</mat-icon>
+            <p>No hay eventos registrados en este período</p>
+          </div>
+        </ng-template>
+      </div>
+    </mat-dialog-content>
+    
+    <mat-dialog-actions align="end">
+      <button mat-button mat-dialog-close>Cerrar</button>
+    </mat-dialog-actions>
+  </div>

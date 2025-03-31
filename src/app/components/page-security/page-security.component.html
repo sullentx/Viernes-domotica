@@ -1,0 +1,61 @@
+<div class="security-page-container">
+  <app-sidenav></app-sidenav>
+  <div class="main-content">
+    <app-header></app-header>
+    <div class="security-content">
+      <div class="security-summary-panel">
+        <h2>Estado de Seguridad</h2>
+        <app-security-status></app-security-status>
+      </div>
+
+      <div class="security-sensors-container">
+        <h2>Monitoreo en Tiempo Real</h2>
+        <div class="security-sensors-grid">
+          <app-motion-sensor></app-motion-sensor>
+          <app-door-sensor></app-door-sensor>
+          <app-gas-sensor></app-gas-sensor>
+        </div>
+      </div>
+
+      <div class="recent-events-panel">
+        <div class="panel-header">
+          <h2>Actividad Reciente</h2>
+        </div>
+        
+        <div class="recent-events-list">
+          <div class="event-item">
+            <div class="event-time">Hace 5 min</div>
+            <div class="event-icon">
+              <mat-icon>motion_sensors</mat-icon>
+            </div>
+            <div class="event-text">Movimiento detectado en sala principal</div>
+          </div>
+          
+          <div class="event-item">
+            <div class="event-time">Hace 12 min</div>
+            <div class="event-icon">
+              <mat-icon>door_front</mat-icon>
+            </div>
+            <div class="event-text">Puerta principal abierta</div>
+          </div>
+          
+          <div class="event-item">
+            <div class="event-time">Hace 30 min</div>
+            <div class="event-icon">
+              <mat-icon>gas_detector</mat-icon>
+            </div>
+            <div class="event-text">Nivel de gas normal (2.1 ppm)</div>
+          </div>
+          
+          <div class="event-item">
+            <div class="event-time">Hace 45 min</div>
+            <div class="event-icon">
+              <mat-icon>window</mat-icon>
+            </div>
+            <div class="event-text">Ventana de sala cerrada</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

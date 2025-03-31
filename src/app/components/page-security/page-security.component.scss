@@ -1,0 +1,228 @@
+.security-page-container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .security-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    overflow: auto; 
+    background-color: #f5f7fa;
+  }
+}
+
+.security-summary-panel {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  
+  h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 8px;
+    border-left: 3px solid #E53935;
+  }
+}
+
+.security-sensors-container {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+  h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    padding-left: 8px;
+    border-left: 3px solid #1E88E5;
+  }
+}
+
+.security-sensors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+}
+
+app-motion-sensor, 
+app-door-sensor, 
+app-gas-sensor {
+  display: block; 
+  overflow: hidden;
+  
+  .sensor-card {
+    width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+.recent-events-panel {
+  background-color: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  
+  .panel-header {
+    margin-bottom: 16px;
+    
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+      color: #333;
+      font-size: 16px;
+      font-weight: 500;
+      padding-left: 8px;
+      border-left: 3px solid #43A047;
+    }
+  }
+}
+
+.recent-events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.event-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  
+  .event-time {
+    width: 90px;
+    font-size: 13px;
+    color: #757575;
+  }
+  
+  .event-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-right: 12px;
+    background-color: #e8eaf6;
+    border-radius: 50%;
+    
+    mat-icon {
+      font-size: 20px;
+      color: #3949AB;
+    }
+  }
+  
+  .event-text {
+    flex: 1;
+    font-size: 14px;
+    color: #333;
+  }
+}
+
+.security-summary-panel,
+.security-sensors-container,
+.recent-events-panel {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@media (max-width: 1200px) {
+  .security-sensors-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .security-content {
+    padding: 15px;
+    gap: 15px;
+  }
+  
+  .security-sensors-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .security-summary-panel,
+  .security-sensors-container,
+  .recent-events-panel {
+    padding: 15px;
+  }
+  
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .event-time {
+      width: 100%;
+      margin-bottom: 8px;
+    }
+    
+    .event-icon {
+      margin-bottom: 8px;
+    }
+    
+    .event-text {
+      width: 100%;
+    }
+  }
+}
+
+.animate-in {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.security-summary-panel {
+  animation-delay: 0.1s;
+}
+
+.security-sensors-container {
+  animation-delay: 0.3s;
+}
+
+.recent-events-panel {
+  animation-delay: 0.5s;
+}

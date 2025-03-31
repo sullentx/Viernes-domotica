@@ -4,6 +4,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomePageComponent } from './components/home-page/home-page.component'; // Asegúrate de importar tu componente Home
+import { PageSecurityComponent } from './components/page-security/page-security.component';
 
 export const routes: Routes = [
     // Ruta por defecto - redirige a home
@@ -18,6 +19,9 @@ export const routes: Routes = [
     // Otras rutas de tu aplicación
     { path: 'card', component: CardComponent },
     { path: 'sidenav', component: SidenavComponent },
+
+    //Ruta Seguridad - muestra el componente PageSecurityComponent
+    {path: 'security', component:PageSecurityComponent},
     
     // Ruta de comodín - redirige a home cuando no se encuentra la ruta
     { path: '**', redirectTo: 'home' }

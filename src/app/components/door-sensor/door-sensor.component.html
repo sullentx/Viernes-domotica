@@ -1,0 +1,43 @@
+<div class="sensor-card door">
+    <div class="sensor-header">
+      <mat-icon>sensors</mat-icon>
+      <h3>Estado de Accesos</h3>
+    </div>
+    
+    <div class="sensor-body">
+      <div class="access-points-grid">
+        <!-- Sensor de Puerta Principal -->
+        <div class="access-point" [class.open]="doorStatus" [class.closed]="!doorStatus">
+          <mat-icon>{{ doorStatus ? 'door_front' : 'door_back' }}</mat-icon>
+          <span>Puerta Principal</span>
+          <div class="status-indicator"></div>
+          <div class="access-status">
+            {{ doorStatus ? 'Abierta' : 'Cerrada' }}
+          </div>
+          <div class="last-activity" *ngIf="doorLastActivity">
+            {{ doorLastActivity | date:'shortTime' }}
+          </div>
+        </div>
+  
+        <!-- Sensor de Ventana -->
+        <div class="access-point" [class.open]="windowStatus" [class.closed]="!windowStatus">
+          <mat-icon>{{ windowStatus ? 'window' : 'window_closed' }}</mat-icon>
+          <span>Ventana</span>
+          <div class="status-indicator"></div>
+          <div class="access-status">
+            {{ windowStatus ? 'Abierta' : 'Cerrada' }}
+          </div>
+          <div class="last-activity" *ngIf="windowLastActivity">
+            {{ windowLastActivity | date:'shortTime' }}
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="history-link">
+      <a (click)="viewHistory()">
+        <mat-icon>history</mat-icon>
+        Ver historial de accesos
+      </a>
+    </div>
+  </div>

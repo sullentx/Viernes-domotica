@@ -1,0 +1,140 @@
+.sensor-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  
+  &.door {
+    border-left: 3px solid #5C6BC0;
+  }
+}
+
+.sensor-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  mat-icon {
+    color: #5C6BC0;
+    margin-right: 12px;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+}
+
+.sensor-body {
+  flex: 1;
+}
+
+.access-points-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.access-point {
+  background-color: #F5F7FA;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  mat-icon {
+    font-size: 32px;
+    height: 32px;
+    width: 32px;
+    margin-bottom: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  span {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .status-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+  }
+  
+  .access-status {
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 4px;
+  }
+  
+  .last-activity {
+    font-size: 11px;
+    color: #757575;
+    margin-top: 4px;
+  }
+  
+  &.open {
+    background-color: rgba(255, 152, 0, 0.1);
+    
+    mat-icon {
+      color: #FF9800;
+    }
+    
+    .status-indicator {
+      background-color: #FF9800;
+    }
+    
+    .access-status {
+      color: #E65100;
+    }
+  }
+  
+  &.closed {
+    mat-icon {
+      color: #4CAF50;
+    }
+  }
+}
+
+.history-link {
+  margin-top: 16px;
+  text-align: center;
+  
+  a {
+    display: inline-flex;
+    align-items: center;
+    color: #5C6BC0;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+    
+    mat-icon {
+      font-size: 16px;
+      height: 16px;
+      width: 16px;
+      margin-right: 4px;
+    }
+  }
+}
