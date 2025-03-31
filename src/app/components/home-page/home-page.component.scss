@@ -1,63 +1,84 @@
-.content {
-  background-color: white;
-  max-width: 1350px;
-  width: 100%;
-  height: 700px;
-  display: grid;
-  grid-template-columns: 1fr auto; 
-  gap: 20px;
-  
-  padding: 20px;
-  
-  margin-left: 20px; 
-  margin-top: 20px;
-  
-  align-items: center;
-  border: 2px solid rgba(0, 0, 0, 0.2); 
-  border-radius: 20px;
-  
-  app-image-house {
-    grid-column: 1; 
-    justify-self: start;
-    padding-bottom: 300px;
-    padding-left: 50px;
-  }
-  
-  app-weather-details {
-    grid-column: 2; 
-    justify-self: end;
-    padding-bottom: 300PX;
-    padding-right: 50px;
-
-  }
- 
-}
-
-
-
-
-@media (max-width: 768px) {
-  .content {
-    margin-left: 20px; 
-    max-width: calc(100% - 40px);
-  }
-}
-
 .app-container {
   display: flex;
   height: 100vh;
-  width: 100%;
 }
 
 .main-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  overflow: hidden; 
 }
 
-.page-content {
+.content {
   flex: 1;
   padding: 20px;
-  overflow: auto;
-} 
+  display: flex;
+  flex-direction: column;
+  gap: 20px; 
+  overflow: hidden; 
+  background-color: #f5f7fa;
+  justify-content: space-between; 
+}
+
+.top-section {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px; 
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  max-height: 420px; 
+  
+  app-image-house {
+    grid-column: 1;
+    justify-self: start;
+    padding-left: 15px; 
+  }
+  
+  app-weather-details {
+    grid-column: 2;
+    justify-self: end;
+    padding-right: 15px; 
+  }
+}
+
+.devices-section {
+  background-color: white;
+  border-radius: 20px;
+  padding: 15px; 
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px; 
+  
+  .section-title {
+    margin-top: 0;
+    margin-bottom: 15px; 
+    color: #333;
+    font-size: 16px; 
+    font-weight: 500;
+    padding-left: 8px; 
+    border-left: 3px solid #1565C0;
+  }
+  
+  .devices-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    padding: 5px;
+    justify-items: center;
+    
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    
+    @media (max-width: 576px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}

@@ -1,0 +1,167 @@
+.sensor-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  
+  &.gas {
+    border-left: 3px solid #4DB6AC;
+  }
+  
+  &.alert {
+    border-left: 3px solid #F44336;
+    animation: pulseAlert 2s infinite;
+  }
+}
+
+@keyframes pulseAlert {
+  0% {
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 12px rgba(244, 67, 54, 0.5);
+  }
+  100% {
+    box-shadow: 0 4px 8px rgba(244, 67, 54, 0.2);
+  }
+}
+
+.sensor-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  
+  mat-icon {
+    color: #4DB6AC;
+    margin-right: 12px;
+  }
+  
+  h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+  
+  .alert & mat-icon {
+    color: #F44336;
+  }
+}
+
+.sensor-body {
+  flex: 1;
+}
+
+.gas-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px;
+  background-color: #F5F7FA;
+  border-radius: 12px;
+}
+
+.gas-meter {
+  width: 60px;
+  height: 120px;
+  background-color: #E0E0E0;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+  
+  .gas-level {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, #4DB6AC, #80CBC4);
+    transition: height 0.5s ease;
+    border-radius: 0 0 30px 30px;
+    
+    .alert & {
+      background: linear-gradient(to top, #F44336, #FFCDD2);
+    }
+  }
+  
+  .gas-threshold {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  .gas-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 4px 6px;
+    border-radius: 10px;
+    
+    &.danger {
+      background: rgba(255, 255, 255, 0.9);
+      color: #F44336;
+    }
+  }
+}
+
+.gas-status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  .status-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    
+    &.safe {
+      background-color: #4CAF50;
+    }
+    
+    &.danger {
+      background-color: #F44336;
+    }
+  }
+  
+  .status-text {
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    
+    &.danger {
+      color: #F44336;
+      font-weight: 700;
+    }
+  }
+  
+  .last-reading {
+    font-size: 12px;
+    color: #757575;
+  }
+}
+
+.emergency-action {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  
+  button {
+    transition: all 0.2s ease;
+    
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}

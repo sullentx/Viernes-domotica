@@ -1,4 +1,5 @@
-.door-control-container {
+
+.exterior-light-control-container {
   width: 195px;
   height: 160px;
   background-color: white;
@@ -22,20 +23,21 @@
   align-items: center;
   text-align: center;
   
-  .door-icon {
+  .light-icon {
     font-size: 48px;
     height: 48px;
     width: 48px;
     margin-bottom: 8px;
     color: #555;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     
-    &.open {
-      color: #2196F3;
+    &.on {
+      color: #FFD54F;
+      filter: drop-shadow(0 0 8px rgba(255, 213, 79, 0.5)); 
     }
   }
   
-  .door-status {
+  .light-status {
     font-size: 14px;
     color: #666;
   }
@@ -46,5 +48,13 @@
   justify-content: center;
   margin-top: 16px;
   
-
+  ::ng-deep .mat-slide-toggle.mat-checked {
+    .mat-slide-toggle-bar {
+      background-color: rgba(255, 213, 79, 0.5); 
+    }
+    
+    .mat-slide-toggle-thumb {
+      background-color: #FFD54F; 
+    }
+  }
 }

@@ -1,4 +1,28 @@
-<div class="image-container">
-    <a >{{ nameOfHouse }}</a>
-    <img src="house-image.png" alt="Casa" class="house">
+<div class="image-container" [class.empty]="!imageUrl">
+  <div class="house-header">
+    <a>{{ nameOfHouse }}</a>
+    <button class="edit-button" (click)="openImageSelector()">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
+  
+  <div class="image-content">
+    <ng-container *ngIf="imageUrl; else noImage">
+      <img [src]="imageUrl" alt="Casa" class="house">
+    </ng-container>
+    <div class="btn-addImage">
+    <ng-template #noImage>
+      <div class="placeholder" (click)="openImageSelector()">
+        <mat-icon>add_photo_alternate</mat-icon>
+        <p>Agregar imagen</p>
+      </div>
+    </ng-template>
+  </div>
+  
+  <input 
+    type="file" 
+    #fileInput 
+    style="display: none" 
+    accept="image/*" 
+    (change)="onFileSelected($event)">
+</div>

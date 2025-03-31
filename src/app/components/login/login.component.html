@@ -1,51 +1,55 @@
 <div class="login-container">
-    <div class="login-card">
-      <div class="login-header">
-        <h1>Bienvenido</h1>
-        <p>Ingresa tus credenciales para continuar</p>
+  <div class="login-card">
+    <div class="login-header">
+      <div class="logo-container">
+        <mat-icon class="smart-home-icon">home</mat-icon>
+      </div>
+      <h1>Smart Home</h1>
+      <p>Control inteligente para tu hogar</p>
+    </div>
+    
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="correo@ejemplo.com">
+          <mat-icon matSuffix>email</mat-icon>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+            El email es obligatorio
+          </mat-error>
+          <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+            Formato de email inválido
+          </mat-error>
+        </mat-form-field>
       </div>
       
-      <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <div class="form-group">
-          <mat-form-field appearance="outline">
-            <mat-label>Correo electrónico</mat-label>
-            <input matInput type="email" formControlName="email" placeholder="correo@ejemplo.com">
-            <mat-icon matSuffix>email</mat-icon>
-            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
-              El correo es obligatorio
-            </mat-error>
-            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
-              Ingresa un correo válido
-            </mat-error>
-          </mat-form-field>
-        </div>
-        
-        <div class="form-group">
-          <mat-form-field appearance="outline">
-            <mat-label>Contraseña</mat-label>
-            <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
-            <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
-              <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-            </button>
-            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-              La contraseña es obligatoria
-            </mat-error>
-          </mat-form-field>
-        </div>
-        
-        <div class="remember-forgot">
-          <mat-checkbox color="primary" formControlName="rememberMe">Recordarme</mat-checkbox>
-          <a href="#" class="forgot-link">¿Olvidaste tu contraseña?</a>
-        </div>
-        
-        <button mat-flat-button color="primary" type="submit" [disabled]="loginForm.invalid || isLoading" class="login-button">
-          <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
-          <span *ngIf="!isLoading">Iniciar sesión</span>
-        </button>
-      </form>
+      <div class="form-group">
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hidePassword ? 'password' : 'text'" formControlName="password">
+          <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword" type="button">
+            <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+            La contraseña es obligatoria
+          </mat-error>
+        </mat-form-field>
+      </div>
       
-      <div class="login-footer">
-        <p>¿No tienes una cuenta? <a routerLink="/register">Regístrate</a></p>
+      <button mat-flat-button type="submit" [disabled]="loginForm.invalid || isLoading" class="login-button">
+        <mat-spinner diameter="20" *ngIf="isLoading"></mat-spinner>
+        <span *ngIf="!isLoading">Ingresar</span>
+      </button>
+    </form>
+    
+    <div class="login-footer">
+      <p>¿No tienes cuenta? <a routerLink="/register">Regístrate</a></p>
+      <div class="device-icons">
+        <mat-icon>power</mat-icon>
+        <mat-icon>thermostat</mat-icon>
+        <mat-icon>lightbulb</mat-icon>
+        <mat-icon>lock</mat-icon>
       </div>
     </div>
   </div>
+</div>

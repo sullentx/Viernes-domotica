@@ -1,68 +1,91 @@
 .clock-container {
-    background-color: #ffffff;
-    border-radius: 80px; 
-    height: 110px; 
-    width: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 30px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 10px;
-    border: 1px solid #00000084;
-    transition: all 0.3s ease;
+  background-color: #ffffff;
+  border-radius: 80px; 
+  height: 110px; 
+  width: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  border: 1px solid #00000084;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px); 
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
     
-    @media (max-width: 768px) {
-      height: auto; 
-      min-height: 110px;
-      border-radius: 40px; 
-      padding: 15px;
-    }
-    
-    @media (max-width: 480px) {
-      border-radius: 25px; 
-      margin: 5px;
-      min-height: 90px; 
+    .clock-content {
+      .time {
+        color: #1565C0; 
+      }
+      
+      .date {
+        color: #0277BD; 
+      }
+      
+      .location {
+        color: #333;
+        font-weight: 500; 
+      }
     }
   }
   
-  .clock-content {
-    text-align: center;
-    font-family: 'Poppins', sans-serif;
-    color: #333;
-    width: 240px;
+  @media (max-width: 768px) {
+    height: auto; 
+    min-height: 110px;
+    border-radius: 40px; 
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 25px; 
+    margin: 5px;
+    min-height: 90px; 
+  }
+}
+
+.clock-content {
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  color: #333;
+  width: 240px;
+  transition: all 0.3s ease; 
+  
+  .date {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 5px;
+    transition: color 0.3s ease;
     
-    .date {
-      font-size: 18px;
-      font-weight: 500;
-      margin-bottom: 5px;
-      
-      @media (max-width: 480px) {
-        font-size: 16px;
-      }
-    }
-    
-    .time {
-      font-size: 28px;
-      font-weight: 700;
-      margin-bottom: 5px;
-      
-      @media (max-width: 480px) {
-        font-size: 24px;
-      }
-    }
-    
-    .location {
+    @media (max-width: 480px) {
       font-size: 16px;
-      font-weight: 400;
-      
-      @media (max-width: 480px) {
-        font-size: 14px;
-      }
     }
   }
-
-  // ... tus estilos actuales
+  
+  .time {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 5px;
+    transition: color 0.3s ease; 
+    
+    @media (max-width: 480px) {
+      font-size: 24px;
+    }
+  }
+  
+  .location {
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease; 
+    
+    @media (max-width: 480px) {
+      font-size: 14px;
+    }
+  }
+}
 
 .location-container {
   margin-top: 8px;
@@ -80,7 +103,6 @@
   }
 }
 
-// Para personalizar el tamaño y color del spinner
-::ng-deep .mat-mdc-progress-spinner {
-  --mdc-circular-progress-active-indicator-color: #3F3F3F;
+.clock-container:hover ::ng-deep .mat-mdc-progress-spinner {
+  --mdc-circular-progress-active-indicator-color: #1565C0;
 }

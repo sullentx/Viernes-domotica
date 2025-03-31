@@ -1,10 +1,10 @@
-.door-control-container {
+.window-control-container {
   width: 195px;
   height: 160px;
   background-color: white;
   border-radius: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 16px;
+  padding: 16px; // Alineado con el componente de puerta
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -22,20 +22,20 @@
   align-items: center;
   text-align: center;
   
-  .door-icon {
-    font-size: 48px;
+  .window-icon {
+    font-size: 48px; // Igualado al tamaño de la puerta
     height: 48px;
     width: 48px;
-    margin-bottom: 8px;
+    margin-bottom: 8px; // Igualado al margin de la puerta
     color: #555;
     transition: color 0.3s ease;
     
     &.open {
-      color: #2196F3;
+      color: #2196F3; // Mismo color que el usado en la puerta
     }
   }
   
-  .door-status {
+  .window-status {
     font-size: 14px;
     color: #666;
   }

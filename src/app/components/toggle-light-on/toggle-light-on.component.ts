@@ -5,17 +5,18 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-toggle-on-dor',
+  selector: 'app-toggle-light-on',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatSlideToggleModule],
-  templateUrl: './toggle-on-dor.component.html',
-  styleUrls: ['./toggle-on-dor.component.scss']
+  templateUrl: './toggle-light-on.component.html',
+  styleUrls: ['./toggle-light-on.component.scss']
 })
-export class ToggleOnDorComponent {
+export class ToggleLightOnComponent {
   @Input() status: boolean = false;
   @Output() statusChange = new EventEmitter<boolean>();
+  @Input() roomName: string = 'Habitación'; 
 
-  toggleDoor(event: MatSlideToggleChange): void {
+  toggleLight(event: MatSlideToggleChange): void {
     this.status = event.checked;
     this.statusChange.emit(this.status);
   }

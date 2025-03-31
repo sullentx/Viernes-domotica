@@ -1,62 +1,116 @@
 .image-container {
-    position: relative;
-    width: 380px;
-    height: 380px;
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
+  position: relative;
+  width: 380px;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin: 20px 0;
+  background-color: white;
+  transition: all 0.3s ease;
   
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
+  }
+  
+  &.empty {
+    background-color: #f5f5f5;
+    border: 2px dashed #ccc;
+  }
+  
+  .house-header {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    
+    a {
+      font-size: 18px;
+      font-weight: 500;
+      margin: 0;
+      transition: color 0.3s ease;
+    }
+    
+    .edit-button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      transition: background-color 0.3s;
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+  
+  .image-content {
+    width: 100%;
+    height: 100%;
+    
     img.house {
       width: 100%;
       height: 100%;
-      object-fit: cover; 
+      object-fit: cover;
       display: block;
-
+      transition: all 0.3s ease;
     }
     
-    a {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      color: white;
-      text-align: center;
-      padding: 12px 0;
-      font-size: 18px;
-      font-weight: 500;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      z-index: 2; 
+    .placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      cursor: pointer;
+      
+      mat-icon {
+        font-size: 64px;
+        width: 64px;
+        height: 64px;
+        color: #aaa;
+        margin-bottom: 12px;
+        transition: all 0.3s ease;
+      }
+      
+      p {
+        color: #666;
+        font-size: 16px;
+        margin: 0;
+        transition: color 0.3s ease;
+      }
       
       &:hover {
-        background-color: rgba(0, 0, 0, 0.8); 
-      }
-    }
-    
-    &:hover img {
-      transform: scale(1.05);
-      transition: transform 0.5s ease;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .image-container {
-      width: 280px;
-      height: 320px;
-      
-      a {
-        font-size: 16px;
-        padding: 10px 0;
+        mat-icon {
+          color: #2196F3;
+          transform: scale(1.1);
+        }
+        
+        p {
+          color: #2196F3;
+        }
       }
     }
   }
   
-  @media (max-width: 576px) {
-    .image-container {
-      width: 100%; 
-      max-width: 330px;
-      height: 350px;
-      margin: 20px auto; 
-    }
+  &:hover .image-content img.house {
+    transform: scale(1.03);
   }
+  
+  &:hover .house-header a {
+    color: #e0f2ff;
+  }
+}

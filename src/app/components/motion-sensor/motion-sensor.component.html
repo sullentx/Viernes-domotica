@@ -1,0 +1,34 @@
+<div class="sensor-card motion" [class.alert]="motionDetected">
+  <div class="sensor-header">
+    <mat-icon>motion_sensors</mat-icon>
+    <h3>Sensor de Movimiento</h3>
+  </div>
+  
+  <div class="sensor-body">
+    <div class="motion-container">
+      <div class="sensor-visualization">
+        <div class="motion-waves" *ngIf="motionDetected"></div>
+        <div class="sensor-icon">
+          <mat-icon [class.detecting]="motionDetected">radar</mat-icon>
+        </div>
+      </div>
+      
+      <div class="motion-status">
+        <div class="status-indicator" [class.active]="motionDetected"></div>
+        <span class="status-text" [class.alert]="motionDetected">
+          {{ motionDetected ? 'Movimiento detectado' : 'Sin movimiento' }}
+        </span>
+        <div class="last-detection" *ngIf="lastDetection">
+          {{ lastDetection | date:'shortTime' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="history-link">
+    <a (click)="viewHistory()">
+      <mat-icon>history</mat-icon>
+      Ver historial de detecciones
+    </a>
+  </div>
+</div>

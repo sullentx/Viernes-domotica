@@ -5,17 +5,17 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-toggle-on-dor',
+  selector: 'app-toggle-window-on',
   standalone: true,
   imports: [CommonModule, MatIconModule, MatSlideToggleModule],
-  templateUrl: './toggle-on-dor.component.html',
-  styleUrls: ['./toggle-on-dor.component.scss']
+  templateUrl: './toggle-window-on.component.html',
+  styleUrls: ['./toggle-window-on.component.scss']
 })
-export class ToggleOnDorComponent {
+export class ToggleWindowOnComponent {
   @Input() status: boolean = false;
   @Output() statusChange = new EventEmitter<boolean>();
 
-  toggleDoor(event: MatSlideToggleChange): void {
+  toggleWindow(event: MatSlideToggleChange): void {
     this.status = event.checked;
     this.statusChange.emit(this.status);
   }

@@ -1,0 +1,41 @@
+<div class="security-alert-overlay" *ngIf="isVisible" [@fadeInOut]>
+    <div class="security-alert-modal" [class]="alertData.severity">
+      <div class="alert-header">
+        <mat-icon>{{ getAlertIcon() }}</mat-icon>
+        <h2>{{ alertData.title }}</h2>
+        <button mat-icon-button (click)="dismiss()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      
+      <div class="alert-body">
+        <p>{{ alertData.message }}</p>
+        <div class="alert-details">
+          <div class="detail-item">
+            <span class="label">Ubicación:</span>
+            <span class="value">{{ alertData.location }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="label">Hora:</span>
+            <span class="value">{{ alertData.timestamp | date:'medium' }}</span>
+          </div>
+        </div>
+        
+        <div class="alert-media" *ngIf="alertData.mediaUrl">
+          <img [src]="alertData.mediaUrl" alt="Imagen de alerta">
+        </div>
+      </div>
+      
+      <div class="alert-actions">
+        <button mat-raised-button color="warn" (click)="notifyEmergency()">
+          <mat-icon>call</mat-icon> Emergencia
+        </button>
+        <button mat-raised-button (click)="viewCamera()" *ngIf="alertData.hasCameraAccess">
+          <mat-icon>videocam</mat-icon> Ver cámara
+        </button>
+        <button mat-raised-button (click)="dismiss(true)">
+          <mat-icon>check</mat-icon> Marcar como revisado
+        </button>
+      </div>
+    </div>
+  </div>
