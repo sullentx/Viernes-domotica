@@ -1,21 +1,25 @@
-<div class="security-status-card" [ngClass]="securityLevel">
+<div class="security-status-container">
+  <!-- Resumen del estado de seguridad -->
+  <div class="security-status-card" [ngClass]="securityLevel">
     <div class="status-icon">
       <mat-icon>{{ getStatusIcon() }}</mat-icon>
     </div>
     <div class="status-info">
       <h3>{{ getStatusMessage() }}</h3>
-      <p>Última revisión: {{ lastCheck | date:'short' }}</p>
-    </div>
-    <div class="status-actions">
-      <button mat-button (click)="runSecurityCheck()">
-        <mat-icon>security</mat-icon> Verificar ahora
-      </button>
+      <p>Actualizado: {{ lastUpdate | date:'shortTime' }}</p>
     </div>
   </div>
   
+  <!-- Contadores de incidencias y sensores -->
   <div class="status-metrics">
-    <div class="metric-card" *ngFor="let metric of securityMetrics">
-      <div class="metric-value" [ngClass]="metric.status">{{ metric.value }}</div>
-      <div class="metric-label">{{ metric.label }}</div>
+    <div class="metric-card incidents">
+      <div class="metric-value" [ngClass]="incidentsClass">{{ totalIncidents }}</div>
+      <div class="metric-label">Incidencias</div>
+    </div>
+    
+    <div class="metric-card sensors">
+      <div class="metric-value">{{ activeSensors }}</div>
+      <div class="metric-label">Sensores activos</div>
     </div>
   </div>
+</div>

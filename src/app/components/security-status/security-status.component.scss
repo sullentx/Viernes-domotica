@@ -1,112 +1,121 @@
+.security-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .security-status-card {
-    display: flex;
-    align-items: center;
-    padding: 20px;
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-radius: 12px;
+  background-color: #f8f9fa;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  
+  &.normal {
+    background-color: rgba(76, 175, 80, 0.1);
+    border-left: 3px solid #4CAF50;
+    
+    .status-icon mat-icon {
+      color: #4CAF50;
+    }
+  }
+  
+  &.warning {
+    background-color: rgba(255, 152, 0, 0.1);
+    border-left: 3px solid #FF9800;
+    
+    .status-icon mat-icon {
+      color: #FF9800;
+    }
+  }
+  
+  &.alert {
+    background-color: rgba(244, 67, 54, 0.1);
+    border-left: 3px solid #F44336;
+    
+    .status-icon mat-icon {
+      color: #F44336;
+    }
+  }
+  
+  .status-icon {
+    margin-right: 16px;
+    
+    mat-icon {
+      font-size: 32px;
+      height: 32px;
+      width: 32px;
+    }
+  }
+  
+  .status-info {
+    flex: 1;
+    
+    h3 {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+    
+    p {
+      margin: 0;
+      font-size: 12px;
+      color: #757575;
+    }
+  }
+}
+
+.status-metrics {
+  display: flex;
+  gap: 16px;
+  
+  .metric-card {
+    flex: 1;
+    padding: 12px;
     border-radius: 12px;
     background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    margin-bottom: 20px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
     
-    &.secure {
-      border-left: 5px solid #4CAF50;
+    &.incidents {
+      border-left: 3px solid #5C6BC0;
     }
     
-    &.warning {
-      border-left: 5px solid #FFC107;
+    &.sensors {
+      border-left: 3px solid #26A69A;
     }
     
-    &.alert {
-      border-left: 5px solid #F44336;
-    }
-    
-    .status-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      margin-right: 20px;
+    .metric-value {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
       
-      mat-icon {
-        width: 40px;
-        height: 40px;
-        font-size: 40px;
-      }
-      
-      .secure & {
-        background-color: rgba(76, 175, 80, 0.1);
+      &.normal {
         color: #4CAF50;
       }
       
-      .warning & {
-        background-color: rgba(255, 193, 7, 0.1);
-        color: #FFC107;
+      &.warning {
+        color: #FF9800;
       }
       
-      .alert & {
-        background-color: rgba(244, 67, 54, 0.1);
+      &.alert {
         color: #F44336;
       }
     }
     
-    .status-info {
-      flex: 1;
-      
-      h3 {
-        margin: 0 0 5px 0;
-        font-size: 18px;
-        font-weight: 500;
-      }
-      
-      p {
-        margin: 0;
-        color: #666;
-        font-size: 14px;
-      }
-    }
-    
-    .status-actions {
-      button {
-        color: #1976D2;
-      }
+    .metric-label {
+      font-size: 12px;
+      color: #757575;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
   }
-  
+}
+
+@media (max-width: 400px) {
   .status-metrics {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-bottom: 20px;
-    
-    .metric-card {
-      background-color: white;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      
-      .metric-value {
-        font-size: 24px;
-        font-weight: 600;
-        margin-bottom: 8px;
-        
-        &.good {
-          color: #4CAF50;
-        }
-        
-        &.warning {
-          color: #FFC107;
-        }
-        
-        &.danger {
-          color: #F44336;
-        }
-      }
-      
-      .metric-label {
-        font-size: 14px;
-        color: #666;
-      }
-    }
+    flex-direction: column;
   }
+}
