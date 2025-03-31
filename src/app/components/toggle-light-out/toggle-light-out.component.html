@@ -1,0 +1,19 @@
+<div class="exterior-light-control-container">
+  <div class="icon-container">
+    <mat-icon class="light-icon" [class.on]="status">
+      {{ status ? 'light' : 'light' }}
+    </mat-icon>
+    <div class="light-status">
+      {{ status ? 'Apagar luces exteriores' : 'Encender luces exteriores' }}
+    </div>
+  </div>
+  
+  <div class="toggle-container">
+    <mat-slide-toggle 
+      color="primary"
+      [checked]="status"
+      (change)="toggleLight($event)">
+      {{ status ? 'Apagar' : 'Encender' }}
+    </mat-slide-toggle>
+  </div>
+</div>

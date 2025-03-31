@@ -12,25 +12,23 @@
   border: 1px solid #00000084;
   transition: all 0.3s ease;
   
-  // Efecto hover similar al del componente weather
   &:hover {
     transform: translateY(-5px); 
     background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ef 100%);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
     
-    // Efectos en elementos internos
     .clock-content {
       .time {
-        color: #1565C0; // Azul similar al weather
+        color: #1565C0; 
       }
       
       .date {
-        color: #0277BD; // Otro tono de azul para destacar
+        color: #0277BD; 
       }
       
       .location {
-        color: #333; // Mantiene buen contraste
-        font-weight: 500; // Ligeramente más bold para enfatizar
+        color: #333;
+        font-weight: 500; 
       }
     }
   }
