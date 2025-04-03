@@ -1,0 +1,571 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Variables
+$color-primary: #3949AB;
+$color-secondary: #5C6BC0;
+$color-accent: #26A69A;
+$color-warm: #FF7043;
+$color-cold: #29B6F6;
+$color-warning: #FF9800;
+$color-success: #4CAF50;
+$color-error: #F44336;
+$color-text-primary: #333;
+$color-text-secondary: #666;
+$color-text-light: #999;
+$color-background: #f5f7fa;
+$card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+// Layout principal
+.climate-page-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .climate-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+    overflow: auto; 
+    background-color: $color-background;
+  }
+}
+
+// Panel principal de temperatura
+.temperature-overview-panel {
+  background-color: white;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: $card-shadow;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  
+  .temperature-main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+  
+  .temperature-reading {
+    display: flex;
+    align-items: center;
+    min-width: 200px;
+    
+    &.indoor {
+      .temp-icon {
+        background-color: rgba($color-primary, 0.1);
+        color: $color-primary;
+      }
+    }
+    
+    &.outdoor {
+      .temp-icon {
+        background-color: rgba($color-warm, 0.1);
+        color: $color-warm;
+      }
+    }
+    
+    .temp-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-right: 20px;
+      
+      mat-icon {
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+      }
+    }
+    
+    .temp-data {
+      .temp-value {
+        font-size: 36px;
+        font-weight: 600;
+        line-height: 1;
+        margin-bottom: 8px;
+        
+        .temp-unit {
+          font-size: 16px;
+          color: $color-text-light;
+          margin-left: 2px;
+        }
+      }
+      
+      .temp-location {
+        font-size: 14px;
+        color: $color-text-secondary;
+        margin-bottom: 4px;
+      }
+      
+      .temp-updated {
+        font-size: 12px;
+        color: $color-text-light;
+      }
+    }
+  }
+  
+  .temperature-comparison {
+    .temp-diff {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background-color: rgba(0, 0, 0, 0.05);
+      
+      mat-icon {
+        font-size: 18px;
+        height: 18px;
+        width: 18px;
+        margin-right: 6px;
+      }
+      
+      &.warmer {
+        background-color: rgba($color-warm, 0.1);
+        color: $color-warm;
+      }
+      
+      &.colder {
+        background-color: rgba($color-cold, 0.1);
+        color: $color-cold;
+      }
+      
+      &.same {
+        background-color: rgba($color-accent, 0.1);
+        color: $color-accent;
+      }
+    }
+  }
+}
+
+// Grid de métricas climáticas
+.climate-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Tarjetas climáticas
+.climate-card {
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: $card-shadow;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+  
+  &.humidity {
+    .card-header {
+      background-color: rgba($color-primary, 0.1);
+      mat-icon { color: $color-primary; }
+    }
+  }
+  
+  &.feels-like {
+    .card-header {
+      background-color: rgba($color-warm, 0.1);
+      mat-icon { color: $color-warm; }
+    }
+  }
+  
+  &.forecast {
+    .card-header {
+      background-color: rgba($color-secondary, 0.1);
+      mat-icon { color: $color-secondary; }
+    }
+  }
+  
+  &.air-quality {
+    .card-header {
+      background-color: rgba($color-accent, 0.1);
+      mat-icon { color: $color-accent; }
+    }
+  }
+  
+  .card-header {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    
+    mat-icon {
+      margin-right: 12px;
+    }
+    
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  
+  .card-content {
+    padding: 16px;
+    flex: 1;
+    
+    &.centered {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+}
+
+// Estilos específicos para el medidor de humedad
+.gauge-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+  
+  .gauge {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    border-radius: 50%;
+    background: conic-gradient(
+      $color-primary 0% var(--percentage, 0%),
+      #e0e0e0 var(--percentage, 0%) 100%
+    );
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      width: 90px;
+      height: 90px;
+      background: white;
+      border-radius: 50%;
+    }
+    
+    .gauge-value {
+      position: relative;
+      font-size: 24px;
+      font-weight: 600;
+      color: $color-primary;
+    }
+  }
+}
+
+.humidity-status {
+  text-align: center;
+  font-size: 14px;
+  color: $color-text-secondary;
+}
+
+// Estilos para lecturas grandes
+.big-reading {
+  font-size: 42px;
+  font-weight: 600;
+  color: $color-text-primary;
+  
+  .unit {
+    font-size: 16px;
+    color: $color-text-light;
+  }
+}
+
+.reading-label {
+  font-size: 14px;
+  color: $color-text-secondary;
+  margin-top: 4px;
+}
+
+// Calidad del aire
+.quality-status {
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 20px;
+  
+  &.excellent {
+    background-color: rgba($color-success, 0.1);
+    color: $color-success;
+  }
+  
+  &.good {
+    background-color: rgba($color-accent, 0.1);
+    color: $color-accent;
+  }
+  
+  &.moderate {
+    background-color: rgba($color-warning, 0.1);
+    color: $color-warning;
+  }
+  
+  &.poor {
+    background-color: rgba($color-error, 0.1);
+    color: $color-error;
+  }
+}
+
+// Pronóstico
+.forecast-days {
+  display: flex;
+  justify-content: space-between;
+  
+  .forecast-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    
+    .day-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: $color-text-secondary;
+      margin-bottom: 8px;
+    }
+    
+    .day-icon {
+      margin-bottom: 8px;
+      
+      mat-icon {
+        color: $color-secondary;
+      }
+    }
+    
+    .day-temp {
+      font-size: 12px;
+      color: $color-text-primary;
+    }
+  }
+}
+
+// Panel de historial de temperatura
+.temperature-history-panel {
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: $card-shadow;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: $color-text-primary;
+    }
+    
+    .time-range-selector {
+      display: flex;
+      gap: 8px;
+      
+      .time-btn {
+        font-size: 12px;
+        color: $color-text-secondary;
+        
+        &.active {
+          color: $color-primary;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+  
+  .chart-container {
+    height: 200px;
+    
+    // Marcador de posición para el gráfico (a reemplazar con un gráfico real)
+    .chart-placeholder {
+      height: 100%;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      background-color: rgba($color-primary, 0.05);
+      border-radius: 8px;
+      overflow: hidden;
+      
+      .chart-line {
+        position: absolute;
+        height: 60px;
+        width: 100%;
+        background: linear-gradient(to right, 
+          transparent 0%,
+          $color-primary 20%,
+          $color-warm 50%,
+          $color-warm 80%,
+          transparent 100%
+        );
+        clip-path: polygon(
+          0% 100%,
+          0% 40%,
+          10% 60%,
+          20% 30%,
+          30% 70%,
+          40% 50%,
+          50% 20%,
+          60% 40%,
+          70% 30%,
+          80% 60%,
+          90% 40%,
+          100% 70%,
+          100% 100%
+        );
+        bottom: 0;
+        opacity: 0.3;
+      }
+      
+      .chart-markers {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 5%;
+        
+        .chart-marker {
+          width: 1px;
+          height: 100%;
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+  }
+}
+
+// Panel de recomendaciones
+.climate-recommendations-panel {
+  background-color: white;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: $card-shadow;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  
+  .panel-header {
+    margin-bottom: 16px;
+    
+    h3 {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: $color-text-primary;
+    }
+  }
+  
+  .recommendations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .recommendation-item {
+    display: flex;
+    padding: 12px;
+    background-color: rgba($color-accent, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba($color-accent, 0.2);
+    
+    .rec-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: rgba($color-accent, 0.1);
+      margin-right: 12px;
+      
+      mat-icon {
+        color: $color-accent;
+      }
+    }
+    
+    .rec-content {
+      flex: 1;
+      
+      .rec-title {
+        font-size: 14px;
+        font-weight: 500;
+        margin-bottom: 4px;
+        color: $color-text-primary;
+      }
+      
+      .rec-text {
+        font-size: 12px;
+        color: $color-text-secondary;
+      }
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .climate-content {
+    padding: 16px;
+  }
+  
+  .temperature-overview-panel {
+    padding: 16px;
+  }
+  
+  .temperature-reading {
+    .temp-icon {
+      width: 50px;
+      height: 50px;
+      margin-right: 16px;
+      
+      mat-icon {
+        font-size: 24px;
+        height: 24px;
+        width: 24px;
+      }
+    }
+    
+    .temp-data {
+      .temp-value {
+        font-size: 32px;
+      }
+    }
+  }
+  
+  .panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    .time-range-selector {
+      margin-top: 12px;
+    }
+  }
+}
