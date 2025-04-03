@@ -1,0 +1,147 @@
+<div class="climate-page-container">
+    <app-sidenav></app-sidenav>
+    <div class="main-content">
+      <app-header></app-header>
+      <div class="climate-content">
+        <!-- Panel principal de temperatura interna y externa -->
+        <div class="temperature-overview-panel">
+          <div class="temperature-main">
+            <div class="temperature-reading indoor">
+              <div class="temp-icon">
+                <mat-icon>thermostat</mat-icon>
+              </div>
+              <div class="temp-data">
+                <div class="temp-value">{{ indoorTemperature }}<span class="temp-unit">°C</span></div>
+                <div class="temp-location">Interior</div>
+                <div class="temp-updated">Actualizado: {{ lastIndoorUpdate | date:'shortTime' }}</div>
+              </div>
+            </div>
+            
+            <div class="temperature-comparison">
+              <div class="temp-diff" [ngClass]="temperatureDiffClass">
+                <mat-icon>{{ temperatureDiffIcon }}</mat-icon>
+                <span>{{ temperatureDiff }}°C</span>
+              </div>
+            </div>
+            
+            <div class="temperature-reading outdoor">
+              <div class="temp-icon">
+                <mat-icon>wb_sunny</mat-icon>
+              </div>
+              <div class="temp-data">
+                <div class="temp-value">{{ outdoorTemperature }}<span class="temp-unit">°C</span></div>
+                <div class="temp-location">Exterior - {{ cityName }}</div>
+                <div class="temp-updated">{{ weatherDescription }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Paneles de humedad y datos complementarios -->
+        <div class="climate-metrics-grid">
+          <!-- Panel de humedad -->
+          <div class="climate-card humidity">
+            <div class="card-header">
+              <mat-icon>water_drop</mat-icon>
+              <h3>Humedad</h3>
+            </div>
+            <div class="card-content">
+              <div class="gauge-container">
+                <div class="gauge" [style.--percentage]="indoorHumidity + '%'">
+                  <div class="gauge-value">{{ indoorHumidity }}%</div>
+                </div>
+              </div>
+              <div class="humidity-status">
+                {{ getHumidityStatus() }}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Panel de sensación térmica -->
+          <div class="climate-card feels-like">
+            <div class="card-header">
+              <mat-icon>thermostat</mat-icon>
+              <h3>Sensación Térmica</h3>
+            </div>
+            <div class="card-content centered">
+              <div class="big-reading">{{ feelsLike }}<span class="unit">°C</span></div>
+              <div class="reading-label">{{ getComfortLevel() }}</div>
+            </div>
+          </div>
+          
+          <!-- Pronóstico diario -->
+          <div class="climate-card forecast">
+            <div class="card-header">
+              <mat-icon>event</mat-icon>
+              <h3>Pronóstico</h3>
+            </div>
+            <div class="card-content">
+              <div class="forecast-days">
+                <div class="forecast-day" *ngFor="let day of forecastDays">
+                  <div class="day-name">{{ day.day }}</div>
+                  <div class="day-icon">
+                    <mat-icon>{{ day.icon }}</mat-icon>
+                  </div>
+                  <div class="day-temp">{{ day.high }}° / {{ day.low }}°</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Panel de calidad del aire -->
+          <div class="climate-card air-quality">
+            <div class="card-header">
+              <mat-icon>air</mat-icon>
+              <h3>Calidad del Aire</h3>
+            </div>
+            <div class="card-content centered">
+              <div class="big-reading">{{ airQualityIndex }}</div>
+              <div class="quality-status" [ngClass]="getAirQualityClass()">
+                {{ getAirQualityText() }}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel de historial de temperatura -->
+        <div class="temperature-history-panel">
+          <div class="panel-header">
+            <h3>Historial de Temperatura</h3>
+            <div class="time-range-selector">
+              <button mat-button class="time-btn" [class.active]="selectedRange === 'day'" (click)="changeTimeRange('day')">Día</button>
+              <button mat-button class="time-btn" [class.active]="selectedRange === 'week'" (click)="changeTimeRange('week')">Semana</button>
+              <button mat-button class="time-btn" [class.active]="selectedRange === 'month'" (click)="changeTimeRange('month')">Mes</button>
+            </div>
+          </div>
+          <div class="chart-container">
+            <!-- Aquí iría tu gráfico, puedes usar ngx-charts, chart.js, etc. -->
+            <div class="chart-placeholder">
+              <!-- Este div será reemplazado por un gráfico real -->
+              <div class="chart-line"></div>
+              <div class="chart-markers">
+                <div *ngFor="let mark of [0, 1, 2, 3, 4]" class="chart-marker"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Panel de recomendaciones -->
+        <div class="climate-recommendations-panel">
+          <div class="panel-header">
+            <h3>Recomendaciones</h3>
+          </div>
+          <div class="recommendations-list">
+            <div class="recommendation-item" *ngFor="let rec of recommendations">
+              <div class="rec-icon">
+                <mat-icon>{{ rec.icon }}</mat-icon>
+              </div>
+              <div class="rec-content">
+                <div class="rec-title">{{ rec.title }}</div>
+                <div class="rec-text">{{ rec.text }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

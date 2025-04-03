@@ -5,6 +5,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomePageComponent } from './components/home-page/home-page.component'; // Asegúrate de importar tu componente Home
 import { PageSecurityComponent } from './components/page-security/page-security.component';
+import { PageClimateComponent } from './components/page-weather/page-weather.component';
 
 export const routes: Routes = [
     // Ruta por defecto - redirige a home
@@ -22,6 +23,10 @@ export const routes: Routes = [
 
     //Ruta Seguridad - muestra el componente PageSecurityComponent
     {path: 'security', component:PageSecurityComponent},
+
+    //Ruta de clima - muestra el componente PageClimateComponent
+
+    {path: 'weather', component: PageClimateComponent},
     
     // Ruta de comodín - redirige a home cuando no se encuentra la ruta
     { path: '**', redirectTo: 'home' }
